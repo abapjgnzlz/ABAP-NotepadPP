@@ -1,0 +1,149 @@
+# ============================================================================
+# ABAP Statements
+# SAP S/4HANA 2023
+# ============================================================================
+
+- keyword: REPORT
+  category: statement
+  since: "3.0"
+  description: Defines an executable program.
+
+- keyword: PROGRAM
+  category: statement
+  since: "3.0"
+  description: Defines an executable program.
+
+- keyword: CLASS
+  category: statement
+  since: "4.6"
+  description: Defines a local or global class.
+
+- keyword: ENDCLASS
+  category: statement
+  since: "4.6"
+  description: Ends a class definition.
+
+- keyword: INTERFACE
+  category: statement
+  since: "4.6"
+  description: Defines an interface.
+
+- keyword: ENDINTERFACE
+  category: statement
+  since: "4.6"
+  description: Ends an interface definition.
+
+- keyword: METHOD
+  category: statement
+  since: "4.6"
+  description: Begins a method implementation.
+
+- keyword: ENDMETHOD
+  category: statement
+  since: "4.6"
+  description: Ends a method implementation.
+
+- keyword: DATA
+  category: statement
+  since: "3.0"
+  description: Declares variables.
+
+- keyword: TYPES
+  category: statement
+  since: "3.0"
+  description: Defines data types.
+
+- keyword: CONSTANTS
+  category: statement
+  since: "3.0"
+  description: Declares constants.
+
+- keyword: FIELD-SYMBOLS
+  category: statement
+  since: "4.0"
+  description: Declares field symbols.
+
+- keyword: PARAMETERS
+  category: statement
+  since: "3.0"
+  description: Declares selection-screen parameters.
+
+- keyword: SELECT-OPTIONS
+  category: statement
+  since: "3.0"
+  description: Declares selection-screen ranges.
+
+- keyword: TABLES
+  category: statement
+  since: "3.0"
+  description: Declares table work areas.
+
+- keyword: INCLUDE
+  category: statement
+  since: "3.0"
+  description: Includes another source file.
+
+- keyword: WRITE
+  category: statement
+  since: "3.0"
+  description: Writes data to the list.
+
+- keyword: NEW-PAGE
+  category: statement
+  since: "3.0"
+  description: Starts a new page.
+
+- keyword: SKIP
+  category: statement
+  since: "3.0"
+  description: Inserts blank lines.
+
+- keyword: ULINE
+  category: statement
+  since: "3.0"
+  description: Draws a horizontal line.
+
+- keyword: FORMAT
+  category: statement
+  since: "3.0"
+  description: Changes list formatting.
+
+- keyword: MESSAGE
+  category: statement
+  since: "3.0"
+  description: Sends an SAP message.
+
+- keyword: LEAVE PROGRAM
+  category: statement
+  since: "3.0"
+  description: Terminates the current program.
+
+- keyword: STOP
+  category: statement
+  since: "3.0"
+  description: Stops list processing.
+
+- keyword: EXIT
+  category: statement
+  since: "3.0"
+  description: Exits a processing block.
+
+- keyword: RETURN
+  category: statement
+  since: "4.6"
+  description: Returns from a procedure.
+
+- keyword: CHECK
+  category: statement
+  since: "3.0"
+  description: Terminates processing if the condition is false.
+
+- keyword: ASSERT
+  category: statement
+  since: "6.10"
+  description: Runtime assertion.
+
+- keyword: BREAK-POINT
+  category: statement
+  since: "3.0"
+  description: Stops execution in the debugger.

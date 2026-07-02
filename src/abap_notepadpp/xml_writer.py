@@ -1,22 +1,30 @@
 """
-XML writer for Notepad++ User Defined Language (UDL).
-
-This module converts the internal keyword database into a Notepad++
-User Defined Language XML file.
+XML writer for Notepad++ User Defined Language.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
-from .models import Keyword
+from jinja2 import Environment, FileSystemLoader
+
+from .config import TEMPLATES_DIR
+from .models import Category, Keyword
 
 
 class XMLWriter:
     """
-    Writes a Notepad++ UDL XML file.
+    Generates the Notepad++ UDL XML file.
     """
+
+    def __init__(self) -> None:
+
+        self.environment = Environment(
+            loader=FileSystemLoader(TEMPLATES_DIR),
+            autoescape=False,
+            trim_blocks=True,
+            lstrip_blocks=True,
+        )
 
     def write(
         self,
@@ -24,52 +32,54 @@ class XMLWriter:
         output_file: Path,
     ) -> None:
 
-        root = ET.Element(
-            "NotepadPlus"
+        template = self.environment.get_template(
+            "udl.xml.j2"
         )
 
-        user_lang = ET.SubElement(
-            root,
-            "UserLang",
-            name="ABAP S/4HANA 2023",
-            ext="abap",
-        )
+        context = {
+            "keywords": self._build_keywords(keywords),
+        }
 
-        keyword_lists = ET.SubElement(
-            user_lang,
-            "KeywordLists",
-        )
-
-        statements = [
-            keyword.keyword
-            for keyword in keywords
-        ]
-
-        ET.SubElement(
-            keyword_lists,
-            "Keywords",
-            name="Keywords1",
-        ).text = " ".join(sorted(statements))
-
-        ET.SubElement(
-            user_lang,
-            "Settings",
-        )
-
-        ET.SubElement(
-            user_lang,
-            "Styles",
-        )
-
-        tree = ET.ElementTree(root)
+        xml = template.render(**context)
 
         output_file.parent.mkdir(
             parents=True,
             exist_ok=True,
         )
 
-        tree.write(
-            output_file,
+        output_file.write_text(
+            xml,
             encoding="utf-8",
-            xml_declaration=True,
         )
+
+    def _build_keywords(
+        self,
+        keywords: list[Keyword],
+    ) -> str:
+        """
+        Build the Keywords1 section.
+
+        Future versions will distribute the keywords
+        among Keywords1..Keywords8.
+        """
+
+        values = sorted(
+            {
+                keyword.keyword
+                for keyword in keywords
+            }
+        )
+
+        return " ".join(values)
+
+    def filter_by_category(
+        self,
+        keywords: list[Keyword],
+        category: Category,
+    ) -> list[Keyword]:
+
+        return [
+            keyword
+            for keyword in keywords
+            if keyword.category == category
+        ]

@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "abap-notepadpp"
+version = "0.1.0-alpha.1"
+description = "Professional Notepad++ User Defined Language (UDL) generator for ABAP / SAP S/4HANA"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Jesus Gonzalez" }
+]
+
+keywords = [
+    "abap",
+    "sap",
+    "notepad++",
+    "udl",
+    "syntax-highlighting",
+    "s4hana"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development",
+    "Topic :: Text Editors"
+]
+
+dependencies = [
+    "PyYAML>=6.0",
+    "Jinja2>=3.1",
+    "lxml>=5.2"
+]
+
+[project.urls]
+Homepage = "https://github.com/abapjgnzlz/ABAP-NotepadPP"
+Repository = "https://github.com/abapjgnzlz/ABAP-NotepadPP"
+Issues = "https://github.com/abapjgnzlz/ABAP-NotepadPP/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+
+python_files = [
+    "test_*.py"
+]
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP"
+]
